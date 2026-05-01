@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.HashMap;
 import com.example.exception.DataNotFoundException;
 import javax.ws.rs.core.Response;
+import com.example.exception.LinkedResourceNotFoundException;
 /**
  *
  * @author Lenovo
@@ -66,7 +67,7 @@ public class SensorResource {
             return Response.status(400).entity("sensor ID is required").build();
         }
         if (sensor.getRoomId() == null || !rooms.containsKey(sensor.getRoomId())){
-            return Response.status(422).entity("Room with ID "+sensor.getRoomId()+" doesn't exist").build();
+            throw new LinkedResourceNotFoundException("Room with ID "+sensor.getRoomId()+" doesn't exist");
             }
         
         // Adding sensors

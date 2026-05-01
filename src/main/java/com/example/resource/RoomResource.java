@@ -56,7 +56,7 @@ public class RoomResource {
             return Response.status(400).entity("Room ID is required").build();
         }
         rooms.put(room.getId(), room);
-        return Response.status(201).entity(room).build();
+        return Response.status(201).entity(room).header("Location", "api/v1/rooms" + room.getId()).build();
     }
     
     @DELETE

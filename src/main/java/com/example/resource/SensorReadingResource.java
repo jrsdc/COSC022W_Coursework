@@ -20,6 +20,7 @@ import java.util.HashMap;
 import com.example.exception.DataNotFoundException;
 import javax.ws.rs.core.Response;
 import java.util.UUID;
+import com.example.exception.SensorUnavailableException;
 
 /**
  *
@@ -58,7 +59,7 @@ public class SensorReadingResource {
         }
     // Checking sensor to ensure it isnt in maintenance
     if (sensor.getStatus().equalsIgnoreCase("MAINTENANCE")){
-         return Response.status(403).entity("Sensor " + sensorId+ " is currently under maintenance").build();
+        throw new SensorUnavailableException("Sensor " + sensorId+ " is currently under maintenance");
         
     }
         reading.setId(UUID.randomUUID().toString());
