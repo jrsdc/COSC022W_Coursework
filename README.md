@@ -11,9 +11,25 @@ Build and Running instructions:
 4. Right click on the project and click 'Clean and Build', followed by 'Run'
 5. The base server is /Coursework/api/v1
 
+## Curl Commands
+
+1. Get all rooms - curl -X GET http://localhost:8080/Coursework/api/v1/rooms
+
+2. Create a new room - curl -X GET http://localhost:8080/Coursework/api/v1/rooms \ -H "Content-Type: application/json" \
+  -d '{"id": "CLASS-001", "name":, "Classroom1","capacity":30}'
+   
+3. Filter sensors by their type - curl -X GET "http://localhost:8080/Coursework/api/v1/sensors?type=Temperature"
+
+
+4. Adding a sensor reading - curl -X GET http://localhost:8080/Coursework/api/v1/sensors/TEMP-01/readings \
+   -H "Content-Type: application/json" \
+   -d '{"value":26.5}'
+
+5. Delete a room - curl -X DELETE http://localhost:8080/Coursework/api/v1/CLASS-001
+
 Question 1: In your report, explain the default lifecycle of a JAX-RS Resource class. Is a new instance instantiated for every incoming request, or does the runtime treat it as a singleton? Elaborate on how this architectural decision impacts the way you manage and synchronize your in-memory data structures (maps/lists) to prevent data loss or race conditions.
 
-A: JAX-RS has a default that treats resource classes that ensures variables aren't preserved in between requests. 
+A: JAX-RS has a default that treats resource classes that ensures variables aren't preserved in between requests. I stored
 
 Question: Why is the provision of ”Hypermedia” (links and navigation within responses) considered a hallmark of advanced RESTful design (HATEOAS)? How does this approach benefit client developers compared to static documentation?
 
