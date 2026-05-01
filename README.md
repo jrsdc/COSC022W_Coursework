@@ -2,7 +2,14 @@
 
 ## This documentation represent the Smart Campus and room management API we were tasked with building for the coursework.
 
-## The API has endpoints to manage rooms, sensors and sensor readings, using JAX-RS, although there is not database used there was memory storage with t
+## The API has endpoints to manage rooms, sensors and sensor readings, using JAX-RS, although there is not database used there was memory storage with HashMaps and ArrayLists.
+
+Build and Running instructions:
+1. Clone this repo
+2. Open this repo in Netbeans
+3. If not already installed - install Tomcat 9 to run the server
+4. Right click on the project and click 'Clean and Build', followed by 'Run'
+5. The base server is /Coursework/api/v1
 
 Question 1: In your report, explain the default lifecycle of a JAX-RS Resource class. Is a new instance instantiated for every incoming request, or does the runtime treat it as a singleton? Elaborate on how this architectural decision impacts the way you manage and synchronize your in-memory data structures (maps/lists) to prevent data loss or race conditions.
 
