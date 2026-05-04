@@ -1,4 +1,4 @@
-# COSC022W_CW
+# Smart Campus API
 
 ## This documentation represents the Smart Campus and room management API we were tasked with building for the coursework.
 
