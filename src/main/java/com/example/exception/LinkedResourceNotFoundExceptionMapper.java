@@ -7,19 +7,21 @@ package com.example.exception;
 import com.example.model.ErrorMessage;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
 
 
 /**
  *
  * @author costa
  */
+@Provider
 public class LinkedResourceNotFoundExceptionMapper  implements ExceptionMapper<LinkedResourceNotFoundException>{
             
         @Override
         public Response toResponse(LinkedResourceNotFoundException exception){
-            ErrorMessage error = new ErrorMessage(exception.getMessage(), 409, "This document is not available at the moment");
+            ErrorMessage error = new ErrorMessage(exception.getMessage(), 422, "This document is not available at the moment");
         
-               return Response.status(409).entity(error).build();
+               return Response.status(422).entity(error).build();
         
         }
 }

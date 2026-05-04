@@ -42,7 +42,7 @@ public class SensorReadingResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getReadings(){
         if(!sensor.containsKey(sensorId)){
-            throw new DataNotFoundException("Sensor with ID "+ sensorId+ " cannot be found");
+            throw new DataNotFoundException("Sensor with ID " + sensorId + " cannot be found");
         }
         List<SensorReading> readings = sensorReadings.get(sensorId);
         return Response.ok(readings).build();
@@ -55,11 +55,11 @@ public class SensorReadingResource {
     public Response addReading(SensorReading reading){
         Sensor sensor = this.sensor.get(sensorId);
         if(sensor == null ){
-        throw new DataNotFoundException("Sensor with ID " +sensorId+" not found");
+        throw new DataNotFoundException("Sensor with ID " + sensorId + " not found");
         }
     // Checking sensor to ensure it isnt in maintenance
     if (sensor.getStatus().equalsIgnoreCase("MAINTENANCE")){
-        throw new SensorUnavailableException("Sensor " + sensorId+ " is currently under maintenance");
+        throw new SensorUnavailableException("Sensor " + sensorId + " is currently under maintenance");
         
     }
         reading.setId(UUID.randomUUID().toString());

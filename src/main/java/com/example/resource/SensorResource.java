@@ -10,7 +10,6 @@ import com.example.model.Sensor;
 import com.example.model.SensorReading;
 import com.example.dao.MockDatabase;
 import javax.ws.rs.*;
-import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ public class SensorResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Collection<Sensor> getAllSensors(@QueryParam("type") String sensorType) {
         
-        if (sensorType == null || sensorType.isEmpty()){
+        if ((sensorType == null || sensorType.isEmpty() || sensorType.isBlank())){
             return sensors.values();
         }
         List<Sensor>filteredSensors = new ArrayList<>();
@@ -54,7 +53,7 @@ public class SensorResource {
     public Response getSensorById(@PathParam("sensorId") String sensorId){
         Sensor sensor = sensors.get(sensorId);
         if (sensor == null){
-            throw new DataNotFoundException("Sensor with ID "+sensorId+" not found");
+            throw new DataNotFoundException("Sensor with ID " +sensorId+ " not found");
         }
         return Response.ok(sensor).build();
     }
@@ -67,7 +66,7 @@ public class SensorResource {
             return Response.status(400).entity("sensor ID is required").build();
         }
         if (sensor.getRoomId() == null || !rooms.containsKey(sensor.getRoomId())){
-            throw new LinkedResourceNotFoundException("Room with ID "+sensor.getRoomId()+" doesn't exist");
+            throw new LinkedResourceNotFoundException("Room with ID " + sensor.getRoomId() + " doesn't exist");
             }
         
         // Adding sensors

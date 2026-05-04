@@ -10,7 +10,6 @@ import com.example.model.SensorReading;
 import com.example.exception.RoomNotEmptyException;
 import com.example.dao.MockDatabase;
 import javax.ws.rs.*;
-import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.ArrayList;
@@ -52,11 +51,11 @@ public class RoomResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createRoom(Room room){
-        if (room == null || room.getId().isEmpty()){
+        if (room == null || room.getId().isEmpty() || room.getId() == null){
             return Response.status(400).entity("Room ID is required").build();
         }
         rooms.put(room.getId(), room);
-        return Response.status(201).entity(room).header("Location", "api/v1/rooms" + room.getId()).build();
+        return Response.status(201).entity(room).header("Location", "api/v1/rooms/{id}" + room.getId()).build();
     }
     
     @DELETE
@@ -67,14 +66,14 @@ public class RoomResource {
         Room room = rooms.get(roomId);
         
         if (room == null) {
-            throw new DataNotFoundException("Room with ID" + roomId+" not found.");
+            throw new DataNotFoundException("Room with ID " + roomId+ " not found.");
         
         }
         if (!room.getSensorIds().isEmpty()){
-            throw new RoomNotEmptyException("The room with ID: "+ roomId+" still has sensors that are active");
+            throw new RoomNotEmptyException("The room with ID: " + roomId+ " still has sensors that are active");
         }
         rooms.remove(roomId);
-        return Response.status(200).entity("The room " + roomId +" has been deleted").build();
+        return Response.status(200).entity("The room " + roomId + " has been deleted").build();
     }
     
     
