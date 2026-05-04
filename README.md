@@ -24,23 +24,23 @@ Build and Running instructions:
    
 curl -X GET http://localhost:8080/Coursework/api/v1/rooms
 
-3. Create a new room
+2. Create a new room
    
 curl -X POST http://localhost:8080/Coursework/api/v1/rooms  -H "Content-Type: application/json" \
   -d '{"id": "CLASS-001", "name":"Classroom 1","capacity":30}'
    
-4. Filter sensors by their type
+3. Filter sensors by their type
    
 curl -X GET "http://localhost:8080/Coursework/api/v1/sensors?type=Temperature"
 
 
-6. Adding a sensor reading
+4. Adding a sensor reading
    
 curl -X POST http://localhost:8080/Coursework/api/v1/sensors/TEMP-01/readings \
    -H "Content-Type: application/json" \
    -d '{"value":26.5}'
 
-8. Delete a room
+5. Delete a room
    
 curl -X DELETE http://localhost:8080/Coursework/api/v1/rooms/CLASS-001
 
