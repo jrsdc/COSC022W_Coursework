@@ -1,8 +1,15 @@
 # COSC022W_CW
 
-## This documentation represent the Smart Campus and room management API we were tasked with building for the coursework.
+## This documentation represents the Smart Campus and room management API we were tasked with building for the coursework.
 
 ## The API has endpoints to manage rooms, sensors and sensor readings, using JAX-RS, although there is not database used there was memory storage with HashMaps and ArrayLists.
+
+## Technologies Used
+- Java
+- JAX-RS(Jersey)
+- Maven
+- Tomcat 9
+- JSON
 
 Build and Running instructions:
 1. Clone this repo
@@ -13,19 +20,24 @@ Build and Running instructions:
 
 ## Curl Commands
 
-1. Get all rooms - curl -X GET http://localhost:8080/Coursework/api/v1/rooms
+1. Get all rooms
+curl -X GET http://localhost:8080/Coursework/api/v1/rooms
 
-2. Create a new room - curl -X GET http://localhost:8080/Coursework/api/v1/rooms \ -H "Content-Type: application/json" \
-  -d '{"id": "CLASS-001", "name":, "Classroom1","capacity":30}'
+2. Create a new room
+curl -X POST http://localhost:8080/Coursework/api/v1/rooms  -H "Content-Type: application/json" \
+  -d '{"id": "CLASS-001", "name":"Classroom 1","capacity":30}'
    
-3. Filter sensors by their type - curl -X GET "http://localhost:8080/Coursework/api/v1/sensors?type=Temperature"
+3. Filter sensors by their type
+curl -X GET "http://localhost:8080/Coursework/api/v1/sensors?type=Temperature"
 
 
-4. Adding a sensor reading - curl -X GET http://localhost:8080/Coursework/api/v1/sensors/TEMP-01/readings \
+4. Adding a sensor reading 
+curl -X POST http://localhost:8080/Coursework/api/v1/sensors/TEMP-01/readings \
    -H "Content-Type: application/json" \
    -d '{"value":26.5}'
 
-5. Delete a room - curl -X DELETE http://localhost:8080/Coursework/api/v1/CLASS-001
+5. Delete a room 
+curl -X DELETE http://localhost:8080/Coursework/api/v1/rooms/CLASS-001
 
 Question: In your report, explain the default lifecycle of a JAX-RS Resource class. Is a new instance instantiated for every incoming request, or does the runtime treat it as a singleton? Elaborate on how this architectural decision impacts the way you manage and synchronize your in-memory data structures (maps/lists) to prevent data loss or race conditions.
 
