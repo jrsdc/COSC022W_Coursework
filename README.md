@@ -1,12 +1,12 @@
 # Smart Campus API
 
-## This documentation represents the Smart Campus and room management API we were tasked with building for the coursework.
+## This repository contains my implementation of a Smart Campus API with sensor reading management for Client-Server Architecture.
 
-## The API has endpoints to manage rooms, sensors and sensor readings, using JAX-RS, although there is not database used there was memory storage with HashMaps and ArrayLists.
+## The project was built using JAX-RS (Jersey) to manage rooms, sensors and sensor readings through RESTful endpoints. 
 
 ## Technologies Used
 - Java
-- JAX-RS(Jersey)
+- JAX-RS (Jersey)
 - Maven
 - Tomcat 9
 - JSON
