@@ -62,7 +62,7 @@ public class SensorResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createSensor(Sensor sensor){
-        if (sensor == null || sensor.getId().isEmpty()){
+        if (sensor == null || sensor.getId().isEmpty() || sensor.getId() == null){
             return Response.status(400).entity("sensor ID is required").build();
         }
         if (sensor.getRoomId() == null || !rooms.containsKey(sensor.getRoomId())){
