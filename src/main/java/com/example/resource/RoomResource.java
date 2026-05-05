@@ -42,7 +42,7 @@ public class RoomResource {
     public Response getRoomById(@PathParam("roomId") String roomId){
         Room room = rooms.get(roomId);
         if (room == null){
-            throw new DataNotFoundException("Room with ID "+roomId+" not found");
+            throw new DataNotFoundException("Room with ID " + roomId + " not found");
         }
         return Response.ok(room).build();
     }
@@ -66,11 +66,11 @@ public class RoomResource {
         Room room = rooms.get(roomId);
         
         if (room == null) {
-            throw new DataNotFoundException("Room with ID " + roomId+ " not found.");
+            throw new DataNotFoundException("Room with ID " + roomId + " not found.");
         
         }
         if (!room.getSensorIds().isEmpty()){
-            throw new RoomNotEmptyException("The room with ID: " + roomId+ " still has sensors that are active");
+            throw new RoomNotEmptyException("The room with ID: " + roomId + " still has sensors that are active");
         }
         rooms.remove(roomId);
         return Response.status(200).entity("The room " + roomId + " has been deleted").build();

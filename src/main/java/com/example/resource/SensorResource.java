@@ -53,7 +53,7 @@ public class SensorResource {
     public Response getSensorById(@PathParam("sensorId") String sensorId){
         Sensor sensor = sensors.get(sensorId);
         if (sensor == null){
-            throw new DataNotFoundException("Sensor with ID " +sensorId+ " not found");
+            throw new DataNotFoundException("Sensor with ID " + sensorId + " not found");
         }
         return Response.ok(sensor).build();
     }
