@@ -19,7 +19,7 @@ public class GenericExceptionMapper implements ExceptionMapper<Throwable>{
             
         @Override
         public Response toResponse(Throwable exception){
-            ErrorMessage error = new ErrorMessage(exception.getMessage(), 500, "This document is not available at the moment");
+            ErrorMessage error = new ErrorMessage("An internal server has occured ", 500, " This document is not available at the moment");
         
                return Response.status(500).entity(error).build();
         
